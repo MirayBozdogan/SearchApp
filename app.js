@@ -5,18 +5,24 @@ const buttonWrapper = document.querySelector('.button-wrapper');
 const searchButton = document.querySelector('#SearchButton');
 const clearButton = document.querySelector('#ClearButton');
 const imageListWrapper = document.querySelector('.imagelist-wrapper');
+const searchIcon = document.querySelector('.search-icon');
 
 runEventListeners();
 
 function runEventListeners() {
     form.addEventListener("submit", search);
     clearButton.addEventListener("click", clear);
+    searchIcon.addEventListener("click", search);
 }
 function clear() {
     input.value = '';
     Array.from(imageListWrapper.children).forEach(child => child.remove());
 }
+function clearSearchInput() {
+    document.getElementById('SearchInput').value = '';
+}
 function search(e) {
+     Array.from(imageListWrapper.children).forEach(child => child.remove());
     const value = input.value.trim();
     fetch(`https://api.unsplash.com/search/photos?query=${value}`, {
         method: 'GET',
@@ -47,6 +53,9 @@ function addImageToUI(url) {
 
     const img = document.createElement('img');
     img.src = url;
+    
+    img.loading = "lazy"; 
+
     div.appendChild(img);
     imageListWrapper.appendChild(div);
 }

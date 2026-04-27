@@ -6,16 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arama Uygulaması</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-
+<nav class="navbar">
+    <div class="navbar-logo">
+     
+      <div class="navbar-isim">Search App</div>
+    </div>
+</nav>
     <div class="form-wrapper">
         <form id="form">
-            <input type="text" id="SearchInput" placeholder="Arama terimini girin">
+            <div class="search-wrapper">
+                <span class="search-icon" onclick="search()">
+                    <i class="fa-solid fa-magnifying-glass" style="color:rgb(136, 136, 136);"></i>
+                </span>
+                <input class="form-control form-control-lg" id="SearchInput" type="text" placeholder="Aramak istediğiniz kelimeyi giriniz...">
+                <span class="clear-icon" onclick="clearSearchInput()">✕</span>
+            </div>
+            <button type="submit" style="display:none"></button>
             <div class="button-wrapper">
-                <button id="SearchButton">Ara</button>
-                <button id="ClearButton">Temizle</button>
+                
             </div>
         </form>
         <div class="imagelist-wrapper">
